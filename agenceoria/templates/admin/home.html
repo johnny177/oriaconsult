@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Home</title>
+        <link href="style.css" rel="stylesheet" />
+		<style>
+		body{
+    margin: 0px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+* {
+    box-sizing: border-box;}
+header{
+    font-size: 1.2rem;
+    background-color : #0d194a;
+    color: white;
+}
+.topsection, .pied_page{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width : auto;
+}
+header h1{
+    margin: auto;
+}
+.navigation
+{
+    display: flex;
+    margin: auto;
+    width: auto;
+    padding: 15px;
+}
+.menu{
+    justify-content: space-between;
+    font-size: 1.3em;
+    padding: 15px;
+    margin: auto;
+    width : auto;
+}
+a{
+    color: white;
+    text-decoration:none; 
+}
+.masection{
+    background-image:url(https://i.postimg.cc/m2Dk4q3v/Canada-Mountains-Lake-Alberta-Fir-Reflection-521932-1920x1080.jpg);/*Ajout de l'image de fond*/
+    background-repeat: no-repeat;/*Bloquer l'image pour pas qu'elle soit répété sur toute la page*/
+    background-attachment:scroll;/*Fixer l'arrière plan*/
+    background-size: 100% 100%;/*L'image prend 100% du conteneur "masection"*/
+    margin: auto;
+    width : auto;
+    padding: 100px;
+    text-align: center;
+}
+.photo_moi 
+{
+  overflow:hidden; /*Ajout de différentes propriétés pour rendre la photo ronde*/
+  -webkit-border-radius:100px;
+  -moz-border-radius:100px;
+  border-radius:100px;
+  width:200px;
+  height:200px;
+}
+.apropos{
+    background-color: white;
+    margin: auto;
+    width: auto;
+    padding: 15px;
+}
+main h2{
+    text-align: center;
+}
+.p1 {
+    padding-left: 350px;
+    padding-right: 350px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.passion{
+    display: flex;
+    width: auto;
+    background-color: white;
+}
+.item{
+    flex: 1 1 100%;/*forcer les boites à prendre 100% de la place du conteneur*/
+    padding: 10px;
+}
+h3{
+    text-align: center;
+}
+.passion p {
+    text-align: center;
+}
+.passion h2{
+    margin: auto;
+    padding-top: 15px;
+}
+.experiences{
+    display: flex;
+    flex-wrap: wrap;/*Forcer les boites à retourner à la ligne*/
+    background-color: #003471;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+.experiences h2{
+    margin: auto;
+}
+.exp{ 
+    padding: 15px;
+    flex : 1 0 50%;/*Forcer les boites à prendre la moitié chacune de la totalité du conteneur*/
+}
+footer{
+    font-size: 0.8rem;
+    background-color : #0d194a;
+    color: white;
+}
+footer h2{
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+}
+.donnees{
+    text-align: center;
+    margin: auto;
+    padding-bottom: 15px;
+}
+
+		</style>
+    </head>
+
+<body>
+    <header> <!-- Création de l'entête-->
+        <div class="topsection">
+            <h1 class="entete">Oria</h1>
+            <nav class="navigation"> <!-- Barre de navigation avec des ancres pour renvoyer aux bons endroits sur le site-->
+                <ul class="menu"><a href="#a_propos">A propos</a></ul>
+                <ul class="menu"><a href="#parcours_professionnel">Expériences</a></ul>
+                <ul class="menu"><a href="#Contact">Contact us</a></ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="masection">
+            <img src="https://i.postimg.cc/S2n8ssw6/freddy-vialettes.jpg" class = "photo_moi" alt="une photo de moi">
+        </div><!-- Ajout d'une photo-->
+
+        <div class="apropos">
+            <h2 id="a_propos">About us</h2>
+            <p class="p1">Je suis un jeune papa de 30 ans habitant sur la commune de Monts dans une maison que nous avons fait construire en 2019. Nous aimons le calme de la campagne et les balades lorsque le temps nous le permet. Notre fils Lucas est venu compléter notre famille et nous a rejoint le 22 Septembre 2020. Il nous comble de bonheur et nous apporte de la joie tous les jours.</p>
+        </div> 
+
+        <div class="experiences">
+            <h2>Mes expériences professionnelles</h2>
+        </div>
+
+        <div class="experiences" id="parcours_professionnel"><!-- Conteneur pour mes 4 expériences-->
+            <div class="exp">
+                <h4>Avril 2019 - Mai 2021, Responsable d'agence - ACII - Tours</h4>
+                    <li>Prospection de nouveaux clients sur la région Centre</li>
+                    <li>Responsable de 15 collaborateurs en assistance technique</li>
+                    <li>Fidélisation d'un portefeuille client existant</li>
+                    <li>Entretien de nouveaux candidats</li>
+                    <li>Vente de formations auprès des clients et prospects</li>    
+            </div>
+            <div class="exp">
+                <h4>Novembre 2018 - Février 2019, Ingénieur commercial - CAPENSIS - Tours</h4>
+                    <li>Prospection de nouveaux clients sur la région Grand-Ouest</li>
+                    <li>Ventes de services autour des solutions Linux et logiciels Open Source</li>
+                    <li>Foisonnement auprès d'un portefeuille client existant</li>
+                    <li>Mise en place de sessions de formations (POE, Intra-entreprise, Inter-entreprises)</li>
+                    <li>Placement de collaborateurs en Assistance technique</li>
+            </div>
+            <div class="exp">
+                <h4>Juin 2017 - Novembre 2018, Ingénieur d'Affaires IT, CLOUD TEMPLE - Tours</h4> 
+                    <li>Prospection téléphonique et détection du besoin</li>
+                    <li>Elaboration de devis</li>
+                    <li>Relance client et négociation</li>
+                    <li>Vente de produits informatiques</li>
+                    <li>Vente de prestations liées à l'infrastructure du SI</li>
+                    <li>Vente de messagerie Zimbra (On Premise, SaaS, PaaS)</li>
+                    <li>Réponse à appel d'offres</li>
+            </div>
+            <div class="exp">
+                <h4>2012 - 2015, Conseiller-Vendeur, GALERIES LAFAYETTE - Tours</h4>
+                    <li>Prospection téléphonique et détection du besoin</li>
+                    <li>Elaboration de devis</li>
+                    <li>Relance client et négociation</li>
+                    <li>Vente de produits informatiques</li>
+                    <li>Vente de prestations liées à l'infrastructure du SI</li>
+                    <li>Vente de messagerie Zimbra (On Premise, SaaS, PaaS)</li>
+                    <li>Réponse à appel d'offres</li>
+            </div>
+        </div>
+        
+        <div class="passion">
+            <h2>Mes centres d'intérêts</h2>
+        </div>
+
+        <div class="passion">
+            <div class="item">
+                <h3>Casse-têtes</h3>
+                <p class="p2">Depuis des années, je suis passionné par le rubik's cube, j'en possède une dizaine, tous aussi difficiles les uns que les autres.
+                        J'ai également énormement de casse-têtes en tout genre à la maison, qu'ils soient en plastique, en bois ou en métal.</p>
+            </div>
+            <div class="item">
+                <h3>Cuisine</h3>
+                <p class="p2">J'adore cuisiner des plats salés et sucrés pour ma famille et mes amis. Je suis constamment en train de chercher de nouvelles recettes et de m'améliorer.</p>
+            </div>
+            <div class="item">
+                <h3>Jeux-vidéo</h3>   
+                <p class="p2">Je joue souvent avec des amis sur le PS4 en ligne, nous avons un petit groupe de gamers et un large choix de jeux pour toujours plus nous amuser !</p>     
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h2 class="contact" id="Contact">Contact us</h2>
+        <div class="pied_page">
+            <div class="donnees">
+                <strong>Adresse : </strong>223 rue du bois de battreau, 37260 Monts
+            </div>
+            <div class="donnees">
+                <strong>Téléphone : </strong>06-37-46-87-43
+            </div>
+            <div class="donnees">
+                <strong>E-Mail : </strong>freddy.vialettes@gmail.com
+            </div>
+            <div class="donnees">
+                <strong>Réseaux Sociaux : </strong><!-- Ajout des liens vers les réseaux sociaux-->
+    						<a href="https://www.facebook.com/freddy.vialettes">Facebook</a>, <a href="https://www.linkedin.com/in/freddy-vialettes-155943127/">Linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% load static %}
+
+{% block head %}
+    <title>Home</title>
+	<link rel="stylesheet" href="{% static 'admin/css/nicepage.css' %}" media="screen">
+	<link rel="stylesheet" href="{% static 'admin/css/Accueil.css' %}" media="screen">
+	<script class="u-script" type="text/javascript" src="{% static 'admin/js/jquery.js' %}"  defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'admin/js/nicepage.js' %}"  defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+        
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/default-logo.png"
+}</script>
+ <style> 
+ #slider {
+    width: 720px;
+    height: 250px;
+    overflow: hidden;
+	
+}
+
+#slider .slides {
+    display: block;
+    width: 6000px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    width: 720px;
+    height: 200px;
+}
+
+/* helper css, since we don't have images */
+.slide1 {background: red;}
+.slide2 {background: blue;}
+.slide3 {background: green;}
+.slide {background: purple;}
+.slide5 {background: pink;}
+ </style>
+		
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/privacy-policy.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/about.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+{% endblock head %}
+{% block body %}
+<body data-home-page="Accueil.html" data-home-page-title="Accueil" class="u-body u-xl-mode" data-lang="fr">
+<section>
+<div class="container" >
+            <div class="header">
+                <h1 class="text-muted">Events</h1>
+            </div>
+
+            <div id="slider">
+                <ul class="slides">
+				{%for x in Evenements %}
+				<div class="text-center">
+				
+                    <li class="slide"><br> in {{x.city}} | {{x.date}} 
+
+<div> <span>{{x.topic}}</span> &middot;<br />
+ {{x.description}}</div>
+<form action="{% url 'eventpar' %}">
+    {% csrf_token %}
+     <input type="hidden" name="courseId" value="{{x.id}}">   
+    <button class="btn btn-primary btn-danger" type="submit">Book</button>
+</form>
+<br />
+</li> </div>                                  
+					{%endfor%}
+					<li class="slide"></li>
+                </ul>
+            </div>
+
+        </div>
+<script>		
+'use strict';
+
+$(function() {
+
+    //settings for slider
+    var width = 720;
+    var animationSpeed = 1000;
+    var pause = 5000;
+    var currentSlide = 1;
+
+    //cache DOM elements
+    var $slider = $('#slider');
+    var $slideContainer = $('.slides', $slider);
+    var $slides = $('.slide', $slider);
+
+    var interval;
+
+    function startSlider() {
+        interval = setInterval(function() {
+            $slideContainer.animate({'margin-left': '-='+width}, animationSpeed, function() {
+                if (++currentSlide === $slides.length) {
+                    currentSlide = 1;
+                    $slideContainer.css('margin-left', 0);
+                }
+            });
+        }, pause);
+    }
+    function pauseSlider() {
+        clearInterval(interval);
+    }
+
+    $slideContainer
+        .on('mouseenter', pauseSlider)
+        .on('mouseleave', startSlider);
+
+    startSlider();
+
+
+});
+</script>		
+</section>
+    <section class="u-clearfix u-palette-4-light-2 u-section-2" id="carousel_0307">
+      <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-valign-middle-xs u-sheet-1">
+        <!-- <div class="u-border-10 u-border-white u-image u-image-circle u-image-1" data-image-width="1513" data-image-height="1080"></div> -->
+        <div class="u-align-center u-container-style u-expanded-width-sm u-expanded-width-xs u-group u-radius-50 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+            <h2 class="u-text u-text-default u-text-1"> ABOUT US</h2>
+            <p class="u-text u-text-2">ORIA CONSULT, We are experts in domestic and international travel, 
+			booking and purchasing airline tickets, visa application services,
+			and provision of educational services.</p>
+            
+          </div>
+        </div>
+        <!-- <div class="u-image u-image-circle u-image-2" data-image-width="1170" data-image-height="780"></div> -->
+       <!--  <div class="u-shape u-shape-svg u-text-palette-4-dark-1 u-shape-1">
+          <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1186"></use></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-1186" style="enable-background:new 0 0 160 160;"><path d="M80,30c27.6,0,50,22.4,50,50s-22.4,50-50,50s-50-22.4-50-50S52.4,30,80,30 M80,0C35.8,0,0,35.8,0,80s35.8,80,80,80
+	s80-35.8,80-80S124.2,0,80,0L80,0z"></path></svg>
+        </div>
+        <div class="u-shape u-shape-svg u-text-palette-4-light-1 u-shape-2">
+          <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-525f"></use></svg>
+          <svg class="u-svg-content" viewBox="0 0 160 160" x="0px" y="0px" id="svg-525f" style="enable-background:new 0 0 160 160;"><path d="M80,30c27.6,0,50,22.4,50,50s-22.4,50-50,50s-50-22.4-50-50S52.4,30,80,30 M80,0C35.8,0,0,35.8,0,80s35.8,80,80,80
+	s80-35.8,80-80S124.2,0,80,0L80,0z"></path></svg>
+        </div> -->
+      </div>
+    </section>
+    <!-- <section class="privacybanner-section">
+        <img src="{% static 'admin/img/oria2.jpg' %}" alt="Privacy Policy" class="privacybannerimg">
+    </section>
+    <section class="section section1">
+        <div class="container">
+            <h1><b>ABOUT US</b></h1>
+            <p>ORIA CONSULT, We are experts in domestic and international travel, 
+			booking and purchasing airline tickets, visa application services,
+			and provision of educational services.</p>
+			<h2>Services</h2>
+			<ul>
+			<li>Booking of Flight</li>
+			<li>Visa Application</li>
+			<li>CV/Resume , Statement of Purpose Writing</li>
+			<li>Screening and Selection of Schools with Lower fees</li>
+			</ul>
+		    <h3>Study Abroad Destinations :</h3>
+			<ul>
+			<li>UK</li>
+			<li>Canada</li>
+			<li>China</li>
+			<li>USA</li>
+			<li>Dubai</li>
+			</ul>
+        </div>
+    </section> -->
+{% endblock%}

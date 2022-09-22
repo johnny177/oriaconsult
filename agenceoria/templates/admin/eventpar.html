@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title>Event register</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+{% endblock %}
+{% block body %}
+ <section class="section section1">       
+    <div class="container">
+	<br>
+	<span class="star" style="color:green"><b>{{message}}</b></span><br>
+	<br>
+		<h3>Registration in <b>{{course1.topic}}</b>:</h3>
+		<div class="trip-modify">
+		<br>
+            <form action="{% url 'eventpar' %}" method= "POST" >
+			{% csrf_token %}
+                <div class="align-items-center">
+                    <div class="search-flight-form-data">
+					<input type="hidden" name="courseI" value="{{course1.id}}">
+                        <div class="input-row">
+                            <label for="flight-from">Name: </label>
+                            <input type="text" name="name" placeholder="Name" class="form-control mr-sm-3 inp name" autocomplete="off">  <!--list="places_from"-->
+                        </div><br>
+                        <div class="input-row">
+                            <label for="flight_to">Contact: </label>
+                            <input type="number" name="contact" placeholder="Contact" class="form-control mr-sm-3  inp contact">
+                        </div><br>
+                       <div class="input-row">
+                            <label for="flight_to">Email: </label>
+                            <input type="email" name="email" placeholder="email" class="form-control mr-sm-3 inp email">
+                        </div>
+     <br>
+                        <div class="input-row">
+                            <center>
+     <input class="btn btn-danger" type="submit" value="Submit" style="margin-top: 10px; width: 25%;" disabled>
+   </center>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+			<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".inp").forEach(input => {
+                input.addEventListener('input', () => {
+                    if ((document.querySelector('.name').value.length === 0) || (document.querySelector('.contact').value.length === 0) || (document.querySelector('.email').value.length === 0)) {
+                        document.querySelector('input[type="submit"]').disabled = true;
+                       
+                    }
+                    else {
+                        document.querySelector('input[type="submit"]').disabled = false;
+                    }
+                });
+            });
+        });
+    </script>
+			</div>
+ </section>  
+{% endblock %}
+<><>

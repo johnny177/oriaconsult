@@ -1,0 +1,71 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title> Visa Services</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/css/search_style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/search2_style.css' %}">
+    <!--<script src="{% static 'js/search.js' %}"></script>-->
+    <script src="{% static 'admin/js/formfunction.js' %}"></script>
+{% endblock %}
+{% block body %}
+ <section class="section section1">
+            <div class="container">
+			<br>
+			<span class="star" style="color:green"><b>{{message}}</b></span><br><br>
+			<h2> Visa booking :</h2> 
+            <form action="{% url 'visasection' %}" method= "POST" onsubmit="return form_function()">
+			  {% csrf_token %}
+			<div class="align-items-center">
+			<div class="search-flight-form-data">
+                <div class="align-items-center">
+                    <div class="search-flight-form-data">
+               <br>
+                        <div class="input-row">
+                            <label for="flight-from">Name: </label>
+                            <input type="text" name="name" id="name" placeholder="Name" class="form-control mr-sm-3 inp name" autocomplete="off">  <!--list="places_from"-->
+                        </div>
+						<br>
+                        <div class="input-row">
+                            <label for="flight_to">Contact: </label>
+                            <input type="number" name="contact" id="contact" placeholder="Contact" class="form-control mr-sm-3 inp contact">
+                        </div>
+						<br>
+                         <div class="input-row">
+                            <label for="seat_class">Type: </label>
+                            <select name="typev" id="typev" class="form-control mr-sm-2 selectpicker">
+                                <option value="1" {% if typev == '1' %}selected{% endif %}>Student Visa</option>
+                                <option value="2" {% if typev == '2' %}selected{% endif %}>Short term Visa</option>
+                                <option value="3" {% if typev == '3' %}selected{% endif %}>UK Settlement application</option>
+                            </select>
+                        </div> 
+						<br>
+                        <div class="input-row">
+						<center>
+                        <input class="btn btn-danger" type="submit" value="submit" style="margin-top: 10px; width: 25%;" disabled>
+            </center>
+                            <!-- <button type="submit" class="btn btn-danger" disabled>Submit</button> -->
+                        </div>
+                    </div>
+                </div>
+				</div>
+				</div>
+            </form>
+            </div>
+			<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".inp").forEach(input => {
+                input.addEventListener('input', () => {
+                    if ((document.querySelector('.name').value.length === 0) || (document.querySelector('.contact').value.length === 0)) {
+                        document.querySelector('input[type="submit"]').disabled = true;
+                    }
+                    else {
+                        document.querySelector('input[type="submit"]').disabled = false;
+                    }
+                });
+            });
+        });
+    </script>
+ </section>       
+{% endblock %}

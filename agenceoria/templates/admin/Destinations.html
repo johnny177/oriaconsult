@@ -1,0 +1,74 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title>forum</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+{% endblock %}
+{% block body %}
+ <section class="section section1">       
+            <div class="container">
+			<br>
+			<span class="star" style="color:green"><b>{{message}}</b></span><br>
+			<h2>Forum</h2>
+			<br>
+            <form action="{% url 'Destinations' %}" method= "POST" >
+			  {% csrf_token %}
+                <div class="align-items-center">
+                    <div class="search-flight-form-data">
+               
+                        <div class="input-row">
+                            <label for="flight-from">Name: </label>
+                            <input type="text" name="name" placeholder="Name" class="form-control mr-sm-3  inp name" autocomplete="off" >  <!--list="places_from"-->
+                        </div><br>
+                        <div class="input-row">
+                            <label for="flight_to">Contact: </label>
+                            <input type="number" name="contact" placeholder="Contact" class="form-control mr-sm-3  inp contact">
+                        </div><br>
+                       <div class="input-row">
+                            <label for="flight_to">Email: </label>
+                            <input type="email" name="email" placeholder="email" class="form-control mr-sm-3  inp email">
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight_to">Service Type: </label>
+                            <select name="types" id="types" class="form-control mr-sm-2 selectpicker">
+                                <option value="1" {% if types == '1' %}selected{% endif %}>Universities Application/Admission</option>
+                                <option value="2" {% if types == '2' %}selected{% endif %}>Admission Documents review</option>
+                                <option value="3" {% if types == '3' %}selected{% endif %}>Funding Assistance (Discounts, Scholarships, Teaching/Assistantships, & Loans)</option>
+								<option value="4" {% if types == '4' %}selected{% endif %}>IELTS Tests</option>
+                            </select>
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight_to">How do you want us to contact you ? </label>
+                            <select name="how" id="types" class="form-control mr-sm-2 selectpicker">
+                                <option value="1" {% if how == '1' %}selected{% endif %}>By email</option>
+                                <option value="2" {% if how == '2' %}selected{% endif %}>By phone</option>
+                            </select>
+                        </div><br>
+                        <div class="input-row">
+                            <center>
+     <input class="btn btn-danger" type="submit" value="Submit" style="margin-top: 10px; width: 25%;" disabled>
+   </center>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".inp").forEach(input => {
+                input.addEventListener('input', () => {
+                    if ((document.querySelector('.name').value.length === 0) || (document.querySelector('.contact').value.length === 0) || (document.querySelector('.email').value.length === 0)) {
+                        document.querySelector('input[type="submit"]').disabled = true;
+                        document.querySelector('input[type="submit"]').disabled = true;
+                    }
+                    else {
+                        document.querySelector('input[type="submit"]').disabled = false;
+                    }
+                });
+            });
+        });
+    </script>
+ </section>  
+{% endblock %}
+<><><><><><><><><><><><><><><><><><><><><><><><>

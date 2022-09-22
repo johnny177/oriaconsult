@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title>Courses</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+{% endblock %}
+{% block body %}
+<h1> Courses  & Conferences :</h1>
+<section class="section section1">
+
+{%for x in C %}
+<div class="card">
+<div class="card-header">
+
+
+
+<span class="text-muted"> in {{x.country}} , {{x.city}} | {{x.date}} , {{x.datetime}}
+for {{x.duration}} </span>
+</div>
+<div class="card-body"> <span class="font-weight-bold">{{x.topic}}</span> &middot;<br />
+ {{x.description}}</div>
+<div class="card-footer text-center text-muted">
+<form action="{% url 'courseregister' %}">
+    {% csrf_token %}
+     <input type="hidden" name="courseId" value="{{x.id}}"> 
+	 <input type="hidden" name="topic" value="{{x.Topic}}"> 
+    <button class="btn btn-primary btn-danger" type="submit">Book</button>
+</form>
+</div>
+</div>
+<br />
+{%endfor%}
+</section>
+{% endblock %}

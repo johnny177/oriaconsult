@@ -1,0 +1,121 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+    <title> CVResume</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/css/search_style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/search2_style.css' %}">
+{% endblock %}
+{% block body %}
+<section class="section section1">
+<h1>Informations REQUIRED :</h1>
+<span class="star" style="color:green"><b>{{message}}</b></span>
+<form method="POST"  action="{% url 'cvresume' %}" enctype="multipart/form-data" class="was-validated">
+{% csrf_token %}
+<div class="input-row">
+                            <label for="flight-from">Your full name: </label>
+                            <input type="text" name="name" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br><div class="input-row">
+                            <label for="flight-from">Post address: </label>
+                            <input type="text" name="adress" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+
+<div class="input-row">
+                            <label for="flight-from">Telephone number: </label>
+                            <input type="tel" name="tel" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight-from">Email address: </label>
+                            <input type="email" name="email" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight-from">Career objective: </label>
+                            <input type="text" name="career" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight-from">Year of admission in the University of Ghana: </label>
+                            <input type="number" min="1900" max="2099" name="year" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+						<div class="input-row">
+                            <label for="flight-from">The courses you read: </label>
+                            <input type="text" name="course"class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+<div class="input-row">
+                            <label for="flight-from">If you have had any work experiences, list them and provide us with the name of the 
+workplace, the month and year you started and ended (e.g. ORIA CONSULT from June 2019 to 
+January 2020): </label>
+                            <input type="text" name="exp" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+<div class="input-row">
+                            <label for="flight-from">Also tell us about any position you have held before and other activities you engage in with 
+their dates (e.g. Course rep, school prefect, communal labour, programmes attended, certificates 
+awarded etc): </label>
+                            <input type="text" name="act" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+<div class="input-row">
+                            <label for="flight-from">Tell us whether or not you have computer skills. Any other skills, abilities and interests?: </label>
+                            <input type="text" name="skill" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+<div class="input-row">
+                            <label for="flight-from">Give us the details of any two people who can be called to be witnesses for you (e.g. Mr. 
+Kwabena Boateng, Director for AMS Business Centre, East Legon, 0244444444,oriaconsultgh@gmail.com)............. This will be optional: </label>
+                            <input type="text" name="wit" class="form-control mr-sm-3 inp name" autocomplete="off" required>
+                        </div><br>
+
+ <div  class="col-sm-6 my-1">
+<!--  <div class="form-group">
+   <label for="file">Upload your CV</label>
+   <input type="file" id="file" name="file" class="form-control mr-sm-3 inp file " required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+   </div> -->
+   <center>
+     <input class="btn btn-danger" type="submit" value="submit" style="margin-top: 10px; width: 25%;" >   
+	 
+   </center>
+ </div>
+</form>
+<!-- <script>
+   document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".inp").forEach(input => {
+                input.addEventListener('input', () => {
+                    if ((document.querySelector('.file').files.size) {
+                        document.querySelector('input[type="submit"]').disabled = false;
+						alert("Please select departure date.");
+                    }
+                    else {
+                        document.querySelector('input[type="submit"]').disabled = true;
+                    }
+                });
+            });
+        });
+		</script> -->
+<br>
+			<br> 
+			
+<!-- 			
+			<form action="/action_page.php" class="was-validated">
+  <div class="form-group">
+    <label for="uname">Username:</label>
+    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Check this checkbox to continue.</div>
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+</section>
+{% endblock %}

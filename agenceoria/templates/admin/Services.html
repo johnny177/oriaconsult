@@ -1,0 +1,55 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+    <title>services</title>
+{% endblock %}
+{% block body %}
+<section class="section section1">
+<h1><b>STUDY ABROAD SERVICES :</b></h1>
+<ul>
+			<li><h2>Universities Application/Admission :</h2></li>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+			when an unknown printer took a galley of type and scrambled it to make a type 
+			specimen book. It has survived not only five centuries, but also the leap into 
+			electronic typesetting, remaining essentially unchanged. It was popularised in 
+			the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+			and more recently with desktop p</p>
+			<li><h2>Admission Documents review :</h2></li>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+			when an unknown printer took a galley of type and scrambled it to make a type 
+			specimen book. It has survived not only five centuries, but also the leap into 
+			electronic typesetting, remaining essentially unchanged. It was popularised in 
+			the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+			and more recently with desktop p</p>
+			<li><h2>Funding Assistance (Discounts, Scholarships, Teaching/Assistantships, & Loans) :</h2></li>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+			when an unknown printer took a galley of type and scrambled it to make a type 
+			specimen book. It has survived not only five centuries, but also the leap into 
+			electronic typesetting, remaining essentially unchanged. It was popularised in 
+			the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+			and more recently with desktop p</p>
+			<li><h2>IELTS Tests :</h2></li>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+			when an unknown printer took a galley of type and scrambled it to make a type 
+			specimen book. It has survived not only five centuries, but also the leap into 
+			electronic typesetting, remaining essentially unchanged. It was popularised in 
+			the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+			and more recently with desktop p</p>
+			</ul>
+			<br>
+			<form action="{% url 'Services' %}" method="POST">
+			{% csrf_token %}
+			<div class="payment-btn" style="background-color: transparent;position: center">
+                     <center>
+     <input class="btn btn-danger" type="submit" value="Book" style="margin-top: 10px; width: 25%;" >
+   </center>
+            </div>
+			</form>
+</section>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>travelling | International</title>
+	<link rel="stylesheet" href="{% static 'admin/bootstrap/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'admin/js/index.js' %}"></script>
+{% endblock head %}
+
+{% block body %}
+<section class="section section1" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('{% static 'admin/img/oria2.jpg'%}');">
+       <!--  <div class="banner-div">
+            <div class="banner">
+            <h1 class="banner-text">Book Domestic and International Flight Tickets</h1>
+            </div>
+        </div> -->
+		 
+ <div class="search-flight">
+ 
+  <div class="container">
+  <h2> Search for International Trip :</h2>
+  <div class="payment-box">
+   <form class="search-flight-form" action="{% url 'flight' %}" onsubmit="return flight_search()">
+    <div class="align-items-center">
+     <div class="search-flight-form-data">
+                        <div class="input-row" style="display: flex;">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input trip-type" id="one-way" name="TripType" value="1" checked>One way
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input trip-type" id="round-trip" name="TripType" value="2" {% if trip_type == '2' %}checked{% endif %}>Round Trip
+                            </label>
+                        </div>
+                        </div>
+                        <div class="input-row">
+                            <label for="flight-from">From: </label>
+                            <input type="text" name="Origin" placeholder="From" id="flight-from" class="form-control mr-sm-3" onblur="hideplaces(this)" data-value="{{origin | lower}}" data-list="places_from" autocomplete="off" value="GHANA">  <!--list="places_from"-->
+                            <div id="places_from" class="places_box">
+							{%for x in p %}
+							{%if x.typep == "local" %}
+							<div class="each_places_from_list places__list" data-value="{{x.code}}" onclick="selectplace(this)">{{x.city}}</div>
+							{%endif%}
+							{%endfor%}
+                                <!-- <div class="each_places_from_list places__list" data-value="1" onclick="selectplace(this)" >city1 GHANA</div>
+								<div class="each_places_from_list places__list" data-value="2" onclick="selectplace(this)" >city2 GHANA</div>
+								<div class="each_places_from_list places__list" data-value="3" onclick="selectplace(this)" >city3 GHANA</div>
+                                 -->
+                            </div></div>
+                        <div class="input-row">
+                            <label for="flight_to">To: </label>
+                            <input type="text" name="Destination" placeholder="To" id="flight-to" class="form-control mr-sm-3" onblur="hideplaces(this)" data-value="{{destination | lower}}" data-list="places_to" autocomplete="off" value="{{destination | upper}}">
+                            <div id="places_to" class="places_box">
+							{%for x in p %}
+							{%if x.typep == "international" %}
+							<div class="each_places_from_list places__list" data-value="{{x.code}}" onclick="selectplace(this)">{{x.city}}</div>
+							{%endif%}
+							{%endfor%}
+                                <!-- <div class="each_places_to_list places__list" data-value="4" onclick="selectplace(this)">UK</div>
+                                <div class="each_places_to_list places__list" data-value="6" onclick="selectplace(this)">DUBAI</div>
+                                <div class="each_places_to_list places__list" data-value="5" onclick="selectplace(this)">CANADA</div>
+                                <div class="each_places_to_list places__list" data-value="7" onclick="selectplace(this)">SANGAPORE</div>
+                                 -->
+                            </div></div>
+                        <div class="input-row">
+                            <label for="depart_date">Departure Date: </label>
+                            <input type="date" name="DepartDate" min="{{min_date}}" max="{{max_date}}" id="depart_date" placeholder="Date" class="form-control mr-sm-2" value="{{depart_date}}">
+                        </div>
+                        <div class="input-row">
+                            <label for="return_date">Return Date: </label>
+                            <input type="date" name="ReturnDate" min="{{min_date}}" max="{{max_date}}" id="return_date" placeholder="Date" class="form-control mr-sm-2" value="{{return_date}}" {% if trip_type != '2' %} disabled {% endif %}>
+                        </div>
+                       <!--  <div class="input-row">
+                            <label for="seat_class">Class: </label>
+                            <select name="SeatClass" id="SeatType" class="form-control mr-sm-2 selectpicker">
+                                <option value="economy" {% if seat == 'economy' %}selected{% endif %}>Economy</option>
+                                <option value="business" {% if seat == 'business' %}selected{% endif %}>Business</option>
+                                <option value="first" {% if seat == 'first' %}selected{% endif %}>First</option>
+                            </select>
+                        </div> -->
+                        <div class="input-row">
+                            <button type="submit" class="btn btn-danger">Search</button>
+                        </div>
+     </div>
+    </div>
+   </form>
+  </div></div>
+ </div>
+</section>
+   <!--  <section class="section second-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h2>Popular Destination</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row popular_destinations">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_Italy'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/1.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">Italy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_Brazil'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/2.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">Brazil</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_the_United_States'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/3.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">America</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_Nepal'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/4.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">Nepal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_the_Maldives'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/5.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">Maldives</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination" onclick="window.location.href = 'https://en.wikipedia.org/wiki/Tourism_in_Indonesia'">
+                        <div class="thumb">
+                            <img src="{% static 'img/destination/6.png' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <a href="#">Indonesia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+{% endblock%}
