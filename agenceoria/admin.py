@@ -153,6 +153,9 @@ class Adminvisa(admin.ModelAdmin):
             'classes': ('',),
             'fields': ['user','Name','Contact','Type']}),                     
               ]  
+   def get_readonly_fields(self, request, obj=None):
+        
+            return ['user','Name','Contact','Type']
 class AdminCVResume(admin.ModelAdmin):
    list_display = ('user','name','address','Telephone','Email','Career_objective','Year_admission_university','courses','experiences','activities','skills','witnesses')
    fieldsets = [    
@@ -160,6 +163,9 @@ class AdminCVResume(admin.ModelAdmin):
             'classes': ('',),
             'fields': ['user','name','address','Telephone','Email','Career_objective','Year_admission_university','courses','experiences','activities','skills','witnesses']}),                     
               ]  
+   def get_readonly_fields(self, request, obj=None):
+        
+            return ['user','name','address','Telephone','Email','Career_objective','Year_admission_university','courses','experiences','activities','skills','witnesses']
 class Adminstudyserv(admin.ModelAdmin):
    list_display = ('user','Name','Contact','Email','ServiceType','How')
    fieldsets = [    
