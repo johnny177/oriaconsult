@@ -25,7 +25,7 @@ SECRET_KEY = 'at#z6)m*#&(q)1krozm-(l42b$4h9oid^6k5lpu_uk!lczc9dn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['fierce-mesa-36574.herokuapp.com',  'oriaconsult.herokuapp.com', '127.0.0.1', 'localhost', '.herokuapp.com']
+ALLOWED_HOSTS = ['fierce-mesa-36574.herokuapp.com',  'oriaconsult.herokuapp.com', '127.0.0.1', 'localhost', '.herokuapp.com', 'oriaconsult2.herokuapp.com']
 
 
 # Application definition
